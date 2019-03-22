@@ -1,0 +1,88 @@
+public class Person {
+	
+	private String vorname;
+	private String nachname;
+	private boolean berufstaetig;
+	private String beruf;
+	private Adresse adresse;
+	private int geburtsjahr;
+	
+	public Person(){
+		
+	}
+	
+	public Person(String vorname, String nachname){
+		this.vorname=vorname;
+		this.nachname=nachname;
+	}
+	
+	public Person(String vorname, String nachname, Adresse adresse){
+		this.vorname=vorname;
+		this.nachname=nachname;
+		this.adresse=adresse;
+	}
+	
+	public String getVorname(){
+		return this.vorname;
+	}
+	
+	public String getNachname(){
+		return this.nachname;
+	}
+	
+	public boolean getBerufstaetig(){
+		return this.berufstaetig;
+	}
+	
+	public String getBeruf(){
+		return this.beruf;
+	}
+	
+	public Adresse getAdresse(){
+		return this.adresse;
+	}
+	
+	public int getGeburtsjahr(){
+		return this.geburtsjahr;
+	}
+	
+	public void setVorname(String vorname){
+		this.vorname=vorname;
+	}
+	
+	public void setNachname(String nachname){
+		this.nachname=nachname;
+	}
+	
+	public void setBerufstaetig(boolean ber){
+		this.berufstaetig=ber;
+	}
+	
+	public void setBeruf(String beruf){
+		this.beruf=beruf;
+	}
+	
+	public void setAdresse(Adresse adr){
+		this.adresse=adr;
+	}
+	
+	public void setGeburtsjahr(int geb){
+		this.geburtsjahr=geb;
+	}
+	
+	public String toString(){
+		if(this.berufstaetig==true&&this.geburtsjahr>1900){
+			return this.vorname+" "+this.nachname+"\n"+ "Beruf: "+this.beruf+"\n"+"Geboren im Jahr "+this.geburtsjahr+"\n Adresse \n"+this.adresse.toString();
+		}else if(this.berufstaetig==true){
+			return this.vorname+" "+this.nachname+"\n"+ "Beruf: "+this.beruf+"\n Adresse \n"+this.adresse.toString();
+		}else if(this.berufstaetig!=true&&this.geburtsjahr>1900){
+			return this.vorname+" "+this.nachname+"\n"+ "Beruf: Person ist nicht berufstätig"+"\n"+"Geboren im Jahr "+this.geburtsjahr+"\n Adresse \n"+this.adresse.toString();
+		}else{
+			return this.vorname+" "+this.nachname+"\n"+ "Beruf: Person ist nicht berufstätig"+"\n Adresse \n"+this.adresse.toString();
+		}
+	}
+	
+	
+	
+
+}
