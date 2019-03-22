@@ -1,0 +1,64 @@
+public class Adresse {
+
+	private String str, hnr, plz, stadt, bundesland, land;
+	
+	public Adresse(String str, String hnr, String plz, String stadt, String bundesland, String land){
+		this.str = str;
+		this.hnr = hnr;
+		this.plz = plz;
+		this.stadt = stadt;
+		this.bundesland = bundesland;
+		this.land=land;
+	}
+	
+	public String getStr(){
+		return this.str;
+	}
+	public String getHnr(){
+		return this.hnr;
+	}
+	public String getPlz(){
+		return this.plz;
+	}
+	public String getStadt(){
+		return this.stadt;
+	}
+	public String getBundesland(){
+		return this.bundesland;
+	}
+	public String getLand(){
+		return this.land;
+	}
+	
+	public void setStr(String str){
+		this.str=str; 
+	}
+	public void setHnr(String hnr){
+		this.hnr=hnr; 
+	}
+	public void setPlz(String plz){
+		this.plz = plz; 
+	}
+	public void setStadt(String stadt){
+		this.stadt=stadt; 
+	}
+	public void setBundesland(String bundesland){
+		this.bundesland=bundesland; 
+	}
+	public void setLand(String land){
+		this.land=land; 
+	}
+	
+	public String toString(){
+		String s = this.str+" "+ this.hnr+" \n"+this.plz+" "+this.stadt+"\n"+this.bundesland+"\n"+this.land;
+		return s;
+	}
+	
+	public boolean liegtInRLP(){
+		if(this.bundesland.equals("Rheinland-Pfalz")||this.bundesland.equals("rheinland-pfalz")){
+			return true;
+		}
+		return false;
+	}
+
+}
