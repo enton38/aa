@@ -1,0 +1,115 @@
+package de.hs_lu.o2s.ueb.ue7.huehner;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class GeordneterHuehnerHof extends HashSet {
+
+	/**
+	 * Vorgegebener Konstruktor - Aufgabe 2 b) Bekommt einen HuehnerHof uebergeben
+	 * und ordnet diesen wie beschrieben (insb. Zuordnung der Eier).
+	 * 
+	 * @param hof
+	 */
+	public GeordneterHuehnerHof(HuehnerHof hof) {
+		super();
+		for (int i = 0; i < hof.size(); i++) {
+
+			if (hof.get(i) instanceof Ei) {
+				if (i == hof.size() - 1) {
+					for (int j = 0; j < hof.size(); j++) {
+						if (hof.get(j) instanceof Henne) {
+							Henne a = (Henne) hof.get(j);
+							if (!a.checkEi()) {
+								((Henne) hof.get(j)).setEi(((Ei) hof.get(i)));
+								;
+							}
+						}
+					}
+				} else if (hof.get(i + 1) instanceof Ei) {
+
+					for (int j = 0; j < hof.size(); j++) {
+						if (hof.get(j) instanceof Henne) {
+							Henne a = (Henne) hof.get(j);
+							if (!a.checkEi()) {
+								((Henne) hof.get(j)).setEi(((Ei) hof.get(i)));
+								;
+							}
+						}
+					}
+
+				}
+			}
+
+		}
+
+		for (int l = 0; l < hof.size(); l++) {
+			this.add(hof.get(l));
+		}
+		
+		int counter = 0;
+		Iterator iter = this.iterator();
+		while(iter.hasNext()) {
+			iter.next();
+			counter++;
+		}
+		
+		for(int z =counter*2;z<hof.size();z++) {
+			super.add(hof.get(z));
+		}
+
+	}
+
+	public boolean add(Object o) {
+
+		if (o instanceof Henne) {
+			super.add(o);
+			return true;
+		}
+
+		return false;
+	}
+
+	public String toString() {
+		String msg = "Aelteste Henne:";
+		Iterator iter2 = this.iterator();
+		int counter = 0;
+		Henne älteste = (Henne) iter2.next();
+		while (iter2.hasNext()) {
+			Object o = iter2.next();
+			if(o instanceof Henne) {
+				Henne neu = (Henne) o;
+
+				boolean t = neu.getGeburtsdatum().before(älteste.getGeburtsdatum());
+				if (t) {
+					älteste = neu;
+				}
+			}
+			
+			
+		}
+		// System.out.println(älteste);
+		msg = msg + älteste + "\n";
+
+		Iterator iter = this.iterator();
+		while (iter.hasNext()) {
+			Object e = iter.next();
+			if(e instanceof Henne) {
+				msg = msg + e + "\n";
+			}
+			
+		}
+		msg = msg + "Nicht zugeordnete Eier:\n";
+		Iterator iter3 = this.iterator();
+		while (iter3.hasNext()) {
+			Object e = iter3.next();
+			if(e instanceof Ei) {
+				msg = msg + e + "\n";
+			}
+			
+		}
+		
+		return msg;
+	}
+
+}
