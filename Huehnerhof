@@ -1,0 +1,64 @@
+package de.hs_lu.o2s.ueb.ue7.huehner;
+
+import java.util.ArrayList;
+
+public class HuehnerHof extends ArrayList {
+	
+	public String toString() {
+		String msg ="";
+		int henneCounter = 0;
+		int eiCounter = 0;
+		
+		for(int i = 0; i<this.size();i++) {
+			if(this.get(i) instanceof Henne) {
+				henneCounter++;
+				msg = msg+"Henne "+henneCounter+":"+this.get(i)+"\n";
+			}else if(this.get(i) instanceof Ei) {
+				eiCounter++;
+				msg = msg+"Ei "+eiCounter+":"+this.get(i)+"\n";
+			}
+		}
+		
+		return msg;
+	}
+	
+	public boolean add(Object o) {
+		if(o instanceof  Henne) {
+			int bereitsVorhanden = -1;
+			
+			for(int i = 0;i<this.size();i++) {
+				if(this.get(i) instanceof Henne) {
+					bereitsVorhanden=((Henne) o).compareTo((Henne) this.get(i));
+					if(bereitsVorhanden==0) {
+						return false;
+					}
+				}
+				
+			}
+			
+			
+			if(((Henne) o).checkEi()) {
+				
+				int bereitsVorhanden2 = -1;
+				
+				for(int i = 0;i<this.size();i++) {
+					if(this.get(i) instanceof Ei) {
+						if(((Henne) o).getEi().equals((Ei) this.get(i))) {
+							bereitsVorhanden2=0;
+							}
+						}
+					}
+				if(bereitsVorhanden2!=0) {
+					super.add(((Henne) o).getEi());
+				}
+			}
+			super.add(o);		
+			return true;
+			
+		}else {
+			super.add(o);
+			return true;
+		}
+	}
+
+}
