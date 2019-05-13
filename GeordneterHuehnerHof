@@ -60,6 +60,8 @@ public class GeordneterHuehnerHof extends HashSet {
 
 	}
 
+
+	//Überschriebene neue Add Methode
 	public boolean add(Object o) {
 
 		if (o instanceof Henne) {
@@ -69,6 +71,8 @@ public class GeordneterHuehnerHof extends HashSet {
 
 		return false;
 	}
+	
+	//Überschriebene neue toString Methode
 
 	public String toString() {
 		String msg = "Aelteste Henne:";
