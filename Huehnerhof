@@ -3,6 +3,8 @@ package de.hs_lu.o2s.ueb.ue7.huehner;
 import java.util.ArrayList;
 
 public class HuehnerHof extends ArrayList {
+
+	//Überschrieben toString Methode
 	
 	public String toString() {
 		String msg ="";
@@ -21,6 +23,8 @@ public class HuehnerHof extends ArrayList {
 		
 		return msg;
 	}
+	
+	//Überschriebene Add-Methode
 	
 	public boolean add(Object o) {
 		if(o instanceof  Henne) {
